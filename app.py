@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = 'mongodb+srv://2100090162:manigaddam@deepsheild.kzgpo9p.mongodb.net/EMU'
+app.config['MONGO_URI'] = 'mongodb+srv://2100090162:manigaddam@deepsheild.kzgpo9p.mongodb.net/EMA'
 mongo = PyMongo(app)
 
 nlp = spacy.load('en_core_web_sm')
@@ -46,7 +46,7 @@ def initialize_model():
     collection = mongo.db.Data
     data_document = collection.find_one({})
     if data_document:
-        content = data_document.get('content', '')
+        content = data_document.get('Content')
         model = QuestionAnsweringModel(content)
         initialized = True
     else:
